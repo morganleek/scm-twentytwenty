@@ -1,0 +1,12 @@
+body {
+    background-color: #555;
+    color: $pink;
+    transition: color 0.3s;
+    font-style: italic;
+    h2 {
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}
