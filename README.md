@@ -1,8 +1,16 @@
 # scm-twentytwenty
 Six Character Media Twenty Twenty Child with Gulp and Webpack
 
-`npm install // Install dependencies`
+```bash
+# Install dependencies
+npm install
+```
 
-`gulp // Dev`
-`gulp build --prod // Build`
-`gulp bundle --prod // Bundle`
+```bash
+# Dev
+gulp 
+# Build
+gulp build --prod
+# Bundle
+gulp bundle --prod // Bundle
+```
