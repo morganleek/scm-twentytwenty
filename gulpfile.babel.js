@@ -87,6 +87,7 @@ export const compress = () => {
     "!gulpfile.babel.js",
     "!package.json",
     "!package-lock.json",
+    "!README.md",
   ])
   .pipe(
     gulpif(

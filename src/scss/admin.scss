@@ -1,3 +1,7 @@
-body {
-	background-color: lightblue;
+@import './components/colors';
+@import './components/fonts';
+@import './components/article';
+
+.edit-post-visual-editor.editor-styles-wrapper {
+	@extend %fonts;
 }

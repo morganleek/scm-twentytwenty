@@ -1,2 +1,9 @@
 @import './components/colors';
+@import './components/fonts';
 @import './components/header';
+@import './components/article';
+@import './components/footer';
+
+body {
+  @extend %fonts;
+}

@@ -1,4 +1,4 @@
-# scm-twentytwenty
+# SCM Twenty Twenty Child Theme (scm-twentytwenty)
 Six Character Media Twenty Twenty Child with Gulp and Webpack
 
 ```bash

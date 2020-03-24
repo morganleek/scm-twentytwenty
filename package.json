@@ -1,6 +1,6 @@
 {
-  "name": "scm-twentytwenty",
-  "version": "1.0.2",
+  "name": "scm_twentytwenty",
+  "version": "1.0.3",
   "description": "SCM TwentyTwenty Child with Gulp + Webpack",
   "main": "index.js",
   "directories": {
