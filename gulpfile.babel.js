@@ -98,6 +98,22 @@ export const compress = () => {
   .pipe(zip(`${info.name}.zip`))
   .pipe(dest('bundled'));
 };
+export const themeify = () => {
+  return src([
+    "**/*",
+    "!node_modules{,/**}",
+    "!bundled{,/**}",
+    "!src{,/**}",
+    "!.babelrc",
+    "!.gitignore",
+    "!gulpfile.babel.js",
+    "!package.json",
+    "!package-lock.json",
+  ])
+  .pipe(replace("_themename", info.name))
+  .pipe(replace("_themedescription", info.description))
+  .pipe(dest(`../${info.name.replace(/_/g, '-')}/`));
+};
 export const pot = () => {
   return src("**/*.php")
     .pipe(
@@ -116,5 +132,5 @@ export const watchForChanges = () => {
   watch("**/*.php", reload);
 } 
 export const dev = series(clean, parallel(styles, images, copy, scripts), serve, watchForChanges);
-export const build = series(clean, parallel(styles, images, copy, scripts), pot, compress);
+export const build = series(clean, parallel(styles, images, copy, scripts), pot, themeify);
 export default dev;
