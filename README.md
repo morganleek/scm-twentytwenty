@@ -22,4 +22,4 @@ gulp bundle --prod // Bundle
 
 ## Deploy Checklist
 1. Run `gulp bundle --prod`.
-2. Copy `bundle/{project-name}.zip` to live FTP.
+2. Copy `wp-content/themes/{project-name}` to live location.
