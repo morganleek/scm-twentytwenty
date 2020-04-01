@@ -18,20 +18,6 @@
     <?php the_posts_pagination( ); ?>
 <?php } else { ?>
     <p><?php esc_html_e('Sorry, no posts matched your criteria.', 'scm_twentytwenty'); ?></p>
-<?php } ?>    
-
-<?php
-
-$city = 'london';
-
-echo esc_html__( 'Your city is', 'scm_twentytwenty' ) . $city;
-
-printf(
-    /* tanslators: %s is the city name */
-    esc_html__( 'Your city is %s', 'scm_twentytwenty' ),
-    $city
-);
-
-?>
+<?php } ?>
 
 <?php get_footer(); ?>

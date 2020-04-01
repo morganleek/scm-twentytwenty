@@ -1,4 +1,6 @@
 import { src, dest, watch, series, parallel } from 'gulp';
+import gutil from 'gulp-util';
+import ftp from 'vinyl-ftp';
 import yargs from 'yargs';
 import sass from 'gulp-sass';
 import cleanCss from 'gulp-clean-css';
@@ -19,7 +21,7 @@ const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
 export const serve = done => {
   server.init({
-    proxy: "wor.localhost"
+    proxy: "wor.burt.local"
   });
   done();
 };
@@ -114,6 +116,29 @@ export const themeify = () => {
   .pipe(replace("_themedescription", info.description))
   .pipe(dest(`../${info.name.replace(/_/g, '-')}/`));
 };
+export const upload = () => {
+  const conn = ftp.create( {
+    host:     'example.com',
+    user:     'user',
+    password: 'pass',
+    parallel: 5,
+    log:      gutil.log
+  });
+
+  return src([
+    "**/*",
+    "!node_modules{,/**}",
+    "!bundled{,/**}",
+    "!src{,/**}",
+    "!.babelrc",
+    "!.gitignore",
+    "!gulpfile.babel.js",
+    "!package.json",
+    "!package-lock.json",
+  ], { base: '.', buffer: false })
+  .pipe(conn.newer(`/public_html/wp-content/themes/${info.name.replace(/_/g, '-')}/`)) // only upload newer files
+  .pipe(conn.dest(`/public_html/wp-content/themes/${info.name.replace(/_/g, '-')}/`));
+}
 export const pot = () => {
   return src("**/*.php")
     .pipe(
@@ -133,4 +158,5 @@ export const watchForChanges = () => {
 } 
 export const dev = series(clean, parallel(styles, images, copy, scripts), serve, watchForChanges);
 export const build = series(clean, parallel(styles, images, copy, scripts), pot, themeify);
+export const deploy = series(clean, parallel(styles, images, copy, scripts), pot, upload);
 export default dev;
