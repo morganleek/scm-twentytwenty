@@ -114,6 +114,7 @@ export const themeify = () => {
   ])
   .pipe(replace("_themename", info.name))
   .pipe(replace("_themedescription", info.description))
+  .pipe(replace("Version: 1.0.0", "Version: 1.0." + Date.now()))
   .pipe(dest(`../${info.name.replace(/_/g, '-')}/`));
 };
 export const upload = () => {
@@ -136,6 +137,9 @@ export const upload = () => {
     "!package.json",
     "!package-lock.json",
   ], { base: '.', buffer: false })
+  .pipe(replace("_themename", info.name))
+  .pipe(replace("_themedescription", info.description))
+  .pipe(replace("Version: 1.0.0", "Version: 1.0." + Date.now()))
   .pipe(conn.newer(`/public_html/wp-content/themes/${info.name.replace(/_/g, '-')}/`)) // only upload newer files
   .pipe(conn.dest(`/public_html/wp-content/themes/${info.name.replace(/_/g, '-')}/`));
 }
