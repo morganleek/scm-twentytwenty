@@ -111,6 +111,7 @@ export const themeify = () => {
     "!gulpfile.babel.js",
     "!package.json",
     "!package-lock.json",
+    "!stats.json",
   ])
   .pipe(replace("_themename", info.name))
   .pipe(replace("_themedescription", info.description))
