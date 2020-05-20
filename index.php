@@ -8,12 +8,12 @@
             </a>
         </h2>
         <div>
-            <?php scm_twentytwenty_post_meta(); ?>
+            <?php _themename_twentytwenty_post_meta(); ?>
         </div>
         <div>
             <?php the_excerpt(); ?>
         </diV>
-            <?php scm_twentytwenty_readmore_link(); ?> 
+            <?php _themename_twentytwenty_readmore_link(); ?> 
     <?php } ?>
     <?php the_posts_pagination( ); ?>
 <?php } else { ?>

@@ -4,6 +4,10 @@
 @import './components/article';
 @import './components/footer';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   @extend %fonts;
 }
