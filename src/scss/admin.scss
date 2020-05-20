@@ -1,7 +1,7 @@
 @import './components/colors';
-@import './components/fonts';
+@import './components/type';
 @import './components/article';
 
 .edit-post-visual-editor.editor-styles-wrapper {
-	@extend %fonts;
+	@extend %type;
 }
