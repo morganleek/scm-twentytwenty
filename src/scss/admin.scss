@@ -5,3 +5,8 @@
 .edit-post-visual-editor.editor-styles-wrapper {
 	@extend %type;
 }
+
+input[type="radio"], input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+}
