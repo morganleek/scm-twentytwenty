@@ -6,7 +6,18 @@
 	@extend %type;
 }
 
-input[type="radio"], input[type="checkbox"] {
-	width: 16px;
-	height: 16px;
+.wp-admin {
+  input[type="checkbox"], 
+  input[type="radio"] {
+		width: 14px;
+		height: 14px;
+		border-radius: 3px;
+	}
+	input[type="checkbox"] {
+		&:before {
+			margin: -2px 0 0 -3px;
+			width: 16px;
+			height: 16px;
+		}
+	}
 }
