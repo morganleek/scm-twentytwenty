@@ -1,19 +1,15 @@
 import { src, dest, watch, series, parallel } from 'gulp';
-import gutil from 'gulp-util';
-import ftp from 'vinyl-ftp';
 import yargs from 'yargs';
 import sass from 'gulp-sass';
-import cleanCss from 'gulp-clean-css';
+// import cleanCss from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
-import imagemin from 'gulp-imagemin';
 import del from 'del';
 import webpack from 'webpack-stream';
 import named from 'vinyl-named';
 import browserSync from "browser-sync";
-import zip from "gulp-zip";
 import info from "./package.json";
 import replace from "gulp-replace";
 import wpPot from "gulp-wp-pot";
@@ -21,7 +17,11 @@ const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
 export const serve = done => {
   server.init({
+<<<<<<< HEAD
     proxy: "wor.grover"
+=======
+    proxy: "wor.localhost"
+>>>>>>> 1bae3ed9c6666123ef4343a231243b79cedf53c8
   });
   done();
 };
@@ -36,14 +36,13 @@ return src(['src/scss/bundle.scss', 'src/scss/admin.scss'])
   .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
   .pipe(sass().on('error', sass.logError))
   .pipe(gulpif(PRODUCTION, postcss([ autoprefixer ])))
-  .pipe(gulpif(PRODUCTION, cleanCss({compatibility:'ie8'})))
+  // .pipe(gulpif(PRODUCTION, cleanCss({compatibility:'ie8'})))
   .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
-  .pipe(dest('dist/css'))
+  .pipe(dest('dist/css', {overwrite: true}))
   .pipe(server.stream());
 }
 export const images = () => {
-return src('src/images/**/*.{jpg,jpeg,png,svg,gif}')
-  .pipe(gulpif(PRODUCTION, imagemin()))
+return src('src/images/**/*.{jpg,jpeg,png,svg,gif,ico}')
   .pipe(dest('dist/images'));
 }
 export const copy = () => {
@@ -78,28 +77,6 @@ export const scripts = () => {
   }))
   .pipe(dest('dist/js'));
 }
-export const compress = () => {
-  return src([
-    "**/*",
-    "!node_modules{,/**}",
-    "!bundled{,/**}",
-    "!src{,/**}",
-    "!.babelrc",
-    "!.gitignore",
-    "!gulpfile.babel.js",
-    "!package.json",
-    "!package-lock.json",
-    "!README.md",
-  ])
-  .pipe(
-    gulpif(
-      file => file.relative.split(".").pop() !== "zip",
-      replace("_themename", info.name)
-    )
-  )
-  .pipe(zip(`${info.name}.zip`))
-  .pipe(dest('bundled'));
-};
 export const themeify = () => {
   return src([
     "**/*",
@@ -112,38 +89,14 @@ export const themeify = () => {
     "!package.json",
     "!package-lock.json",
     "!stats.json",
+    "!README.md",
+    "!.DS_Store"
   ])
   .pipe(replace("_themename", info.name))
   .pipe(replace("_themedescription", info.description))
   .pipe(replace("Version: 1.0.0", "Version: 1.0." + Date.now()))
   .pipe(dest(`../${info.name.replace(/_/g, '-')}/`));
 };
-export const upload = () => {
-  const conn = ftp.create( {
-    host:     'example.com',
-    user:     'user',
-    password: 'pass',
-    parallel: 5,
-    log:      gutil.log
-  });
-
-  return src([
-    "**/*",
-    "!node_modules{,/**}",
-    "!bundled{,/**}",
-    "!src{,/**}",
-    "!.babelrc",
-    "!.gitignore",
-    "!gulpfile.babel.js",
-    "!package.json",
-    "!package-lock.json",
-  ], { base: '.', buffer: false })
-  .pipe(replace("_themename", info.name))
-  .pipe(replace("_themedescription", info.description))
-  .pipe(replace("Version: 1.0.0", "Version: 1.0." + Date.now()))
-  .pipe(conn.newer(`/public_html/wp-content/themes/${info.name.replace(/_/g, '-')}/`)) // only upload newer files
-  .pipe(conn.dest(`/public_html/wp-content/themes/${info.name.replace(/_/g, '-')}/`));
-}
 export const pot = () => {
   return src("**/*.php")
     .pipe(
@@ -156,12 +109,11 @@ export const pot = () => {
 };
 export const watchForChanges = () => {
   watch('src/scss/**/*.scss', styles);
-  watch('src/images/**/*.{jpg,jpeg,png,svg,gif}', series(images, reload));
+  watch('src/images/**/*.{jpg,jpeg,png,svg,gif,ico}', series(images, reload));
   watch(['src/**/*','!src/{images,js,scss}','!src/{images,js,scss}/**/*'], series(copy, reload));
   watch('src/js/**/*.js', series(scripts, reload));
   watch("**/*.php", reload);
 } 
 export const dev = series(clean, parallel(styles, images, copy, scripts), serve, watchForChanges);
 export const build = series(clean, parallel(styles, images, copy, scripts), pot, themeify);
-export const deploy = series(clean, parallel(styles, images, copy, scripts), pot, upload);
 export default dev;
