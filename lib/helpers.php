@@ -1,4 +1,5 @@
 <?php
+  // quickly dump variables
   if(!function_exists('___')) {
     function ___($object, $return = false) {
       $pre = '<pre>' . print_r($object, true) . '</pre>';
