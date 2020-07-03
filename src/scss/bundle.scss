@@ -1,11 +1,15 @@
+@import './components/reset';
 @import './components/colors';
 @import './components/type';
+@import './components/accessibility';
+@import './components/gutenberg';
+@import './components/body';
 @import './components/header';
 @import './components/article';
 @import './components/footer';
 
-// Node Module
-// @import '../../node_modules/....';
+// external example
+// @import '../../node_modules/...';
 
 * {
   box-sizing: border-box;
@@ -13,4 +17,5 @@
 
 body {
   @extend %type;
+  @extend %type-front;
 }
