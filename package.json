@@ -1,6 +1,9 @@
 {
   "name": "scm_twentytwenty_live",
-  "version": "1.0.3",
+  "themename": "scm_twentytwenty",
+  "themetitle": "SCM Twenty Twenty",
+  "themefolder": "scm-twentytwenty",
+  "version": "1.0.0",
   "description": "SCM TwentyTwenty Child with Gulp + Webpack",
   "main": "index.js",
   "directories": {

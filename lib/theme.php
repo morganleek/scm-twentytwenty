@@ -8,6 +8,15 @@
     return array_flip($temp_classes);
   } );
 
+  function _themename_twentytwenty_site_logo_args($args, $defaults) {
+    $args['single_wrap'] = '<div class="%1$s faux-heading"><h1>%2$s</h1></div>';
+    return $args;
+  }
+	add_filter( 'twentytwenty_site_logo_args', '_themename_twentytwenty_site_logo_args', 10, 2 );
+
+  add_filter( 'twentytwenty_post_meta_location_single_bottom', '__return_empty_string' );
+  add_filter( 'twentytwenty_post_meta_location_single_top', '__return_empty_string' );
+
   // function _themename_customize_register( $wp_customize ) {
   //   $wp_customize->selective_refresh->add_partial(
   //     'hide_site_title',
@@ -37,31 +46,48 @@
   //     )
   //   );
 
-  //   // Mailchimp Panel
-  //   // Appended
+  //   // Footer Panel
   //   $wp_customize->add_setting( 
-  //     '_themename_subscribe_form_html' , array(
-  //       'capability'        => 'edit_theme_options',
-  //       'default'   => '<!-- Insert HTML Form -->',
-  //       'transport' => 'postMessage',
+  //     '_themename_footer_phone' , array(
+  //       'capability' => 'edit_theme_options',
+  //       'default'    => '+61-(0)-455-335-325',
+  //       'transport'  => 'postMessage',
+  //     )
+  //   );
+
+  //   $wp_customize->add_setting( 
+  //     '_themename_footer_email' , array(
+  //       'capability' => 'edit_theme_options',
+  //       'default'    => 'contact@joshrush.co',
+  //       'transport'  => 'postMessage',
   //     )
   //   );
 
   //   $wp_customize->add_section(
-  //     '_themename_subscribe_form',
+  //     '_themename_footer_panel',
   //     array(
-  //       'title'      => __( 'Subscribe Form' ),
-  //       'priority'   => 45,
+  //       'title'      => __( 'Footer' ),
+  //       'priority'   => 200,
   //       'capability' => 'edit_theme_options',
   //     )
   //   );
     
   //   $wp_customize->add_control( 
-  //     '_themename_subscribe_form_html', array(
-  //       'type'        => 'code_editor',
-  //       'section'     => '_themename_subscribe_form',
+  //     '_themename_footer_email', array(
+  //       'type'        => 'email', // code_editor
+  //       'section'     => '_themename_footer_panel',
   //       'priority'    => 11,
-  //       'label'       => __( 'Subscribe Form HTML' ),
+  //       'label'       => __( 'Email' ),
+  //       'description' => __( '' ),
+  //     ) 
+  //   );
+
+  //   $wp_customize->add_control( 
+  //     '_themename_footer_phone', array(
+  //       'type'        => 'url', // code_editor
+  //       'section'     => '_themename_footer_panel',
+  //       'priority'    => 11,
+  //       'label'       => __( 'Phone Number' ),
   //       'description' => __( '' ),
   //     ) 
   //   );
@@ -102,6 +128,19 @@
 
     // Remove Custom Font Sizes
     add_theme_support('disable-custom-font-sizes');
+
+    // Font Sizes - using 'add_theme_support('editor-font-sizes', ...' forces a style size and not a class one
+    // global $_wp_theme_features;
+    // if(isset($_wp_theme_features['editor-font-sizes'][0])) {
+    //   $_wp_theme_features['editor-font-sizes'][0][2]['size'] = 15;
+    //   unset($_wp_theme_features['editor-font-sizes'][0][0]);
+    //   unset($_wp_theme_features['editor-font-sizes'][0][1]);
+    //   unset($_wp_theme_features['editor-font-sizes'][0][3]);
+    //   $_wp_theme_features['editor-font-sizes'][0] = array_values($_wp_theme_features['editor-font-sizes'][0]);
+    // }
+
+    // Hide Heading Search
+    set_theme_mod( 'enable_header_search', false );
 
     // Custom Colour Palette
     /*
@@ -153,7 +192,58 @@
     */
 	}
 	
-	add_action( 'after_setup_theme', '_themename_setup', 100 );
+  add_action( 'after_setup_theme', '_themename_setup', 100 );
+  
+  // twentytwenty site description
+  add_filter( 'twentytwenty_site_description', '_return_empty_string', 10, 3 );
+
+  // add meta tags to body class
+  // function _themename_body_class($classes, $class) {
+  //   global $wp_query;
+  //   if ( is_singular() ) {
+  //     // get id
+  //     $post_id = $wp_query->get_queried_object_id();
+  //     // get desktop meta
+  //     $desktop = get_post_meta( $post_id, 'scm_sidebar_plugin_desktop_title_visible', true );
+  //     if($desktop) {
+  //       $classes[] = 'hide-title-desktop';
+  //     }
+  //     // get mobile meta
+  //     $mobile = get_post_meta( $post_id, 'scm_sidebar_plugin_mobile_title_visible', true );
+  //     if($mobile) {
+  //       $classes[] = 'hide-title-mobile';
+  //     }
+  //   }
+  //   return $classes;
+  // }
+
+  // add_filter( 'body_class', '_themename_body_class', 10, 2 );
+
+  // hide some blocks from user
+  // function _themename_allowed_block_types( $allowed_blocks ) {  
+  //   return array(
+  //     'scm/block-list-post-type',
+  //     'core/paragraph',
+  //     'core/image',
+  //     'core/heading',
+  //     'core/gallery',
+  //     'core/list',
+  //     'core/quote',
+  //     'core/pullquote',
+  //     'core/audio',
+  //     'core/file',
+  //     'core/group',
+  //     'core/separator',
+  //     'core/buttons',
+  //     'core/columns',
+  //     'core/media-text',
+  //     'core/spacer',
+  //     'core/cover',
+  //     'core/shortcode'
+  //   );
+  // }
+
+  // add_filter( 'allowed_block_types', '_themename_allowed_block_types' );
 
   function _themename_init() {
     remove_filter( 'edit_post_link', 'twentytwenty_edit_post_link', 10 );

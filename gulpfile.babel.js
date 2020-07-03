@@ -88,10 +88,12 @@ export const themeify = () => {
     "!README.md",
     "!.DS_Store"
   ])
-  .pipe(replace("_themename", info.name))
+  .pipe(replace("_themetitle", info.themetitle))
+  .pipe(replace("_themename", info.themename))
   .pipe(replace("_themedescription", info.description))
   .pipe(replace("Version: 1.0.0", "Version: 1.0." + Date.now()))
-  .pipe(dest(`../${info.name.replace(/_/g, '-')}/`));
+  .pipe(replace("1.0.0", "1.0." + Date.now()))
+  .pipe(dest(`../${info.themefolder}/`));
 };
 export const pot = () => {
   return src("**/*.php")
@@ -101,7 +103,7 @@ export const pot = () => {
         package: info.name
       })
     )
-  .pipe(dest(`languages/${info.name}.pot`));
+  .pipe(dest(`languages/${info.themefolder}.pot`));
 };
 export const watchForChanges = () => {
   watch('src/scss/**/*.scss', styles);

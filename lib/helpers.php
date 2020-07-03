@@ -1,5 +1,4 @@
 <?php
-  // quickly dump variables
   if(!function_exists('___')) {
     function ___($object, $return = false) {
       $pre = '<pre>' . print_r($object, true) . '</pre>';
@@ -41,3 +40,21 @@
     );
     echo '</a>';
   }
+
+  // function _themename_dump_filters_before() {
+  //   global $wp_filter;
+  //   print '<pre>';
+  //   foreach($wp_filter as $k => $v) {
+  //     print '"' . $k . '"' . "\n"; // Filter
+  //     foreach($v->callbacks as $n => $m) {
+  //       // $n = Priority
+  //       foreach($m as $t => $s) {
+  //         print "  " . $t . " (" . $n . ")\n";
+  //       }
+  //     }
+  //   }
+  //   print '</pre>';
+  //   die();
+  // }
+
+  // add_action('init', '_themename_dump_filters_before', 100);

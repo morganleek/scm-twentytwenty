@@ -1,0 +1,17 @@
+// for everywhere
+%wp-blocks {
+  .wp-block-quote {
+    p {
+      font-size: 20rem;
+    }
+  }
+}
+
+// for admin only
+%wp-blocks-admin {
+  .wp-block-quote {
+    p {
+      font-size: 22rem;
+    }
+  }
+}
