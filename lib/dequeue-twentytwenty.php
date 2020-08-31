@@ -14,6 +14,13 @@
     remove_action( 'init', 'twentytwenty_classic_editor_styles', 10 );
     // Editor Styles
     remove_action( 'enqueue_block_editor_assets', 'twentytwenty_block_editor_styles', 1 );
+
+    // Add Theme Supports Removed Above
+    
+    // Align Wide Support
+    add_theme_support( 'align-wide' );
+    // Title Support
+    add_theme_support( 'title-tag' );
   }
 
   add_action('after_setup_theme', '_themename_dequeue_twentytwenty', 5);
