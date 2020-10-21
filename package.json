@@ -1,10 +1,10 @@
 {
-  "name": "scm_twentytwenty_live",
-  "themename": "scm_twentytwenty",
-  "themetitle": "SCM Twenty Twenty",
-  "themefolder": "scm-twentytwenty",
+  "name": "sc_social",
+  "themename": "sc_social",
+  "themetitle": "SC Social",
+  "themefolder": "sc-social",
   "version": "1.0.0",
-  "description": "SCM TwentyTwenty Child with Gulp + Webpack",
+  "description": "SC Social TwentyTwenty Child with Gulp + Webpack",
   "main": "index.js",
   "directories": {
     "lib": "lib"
