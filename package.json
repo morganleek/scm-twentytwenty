@@ -1,28 +1,27 @@
 {
-  "name": "sc_social",
-  "themename": "sc_social",
-  "themetitle": "SC Social",
-  "themefolder": "sc-social",
+  "name": "scm_twentytwenty",
+  "themename": "scm_twentytwenty",
+  "themetitle": "SCM TwentyTwenty",
+  "themefolder": "scm-twentytwenty",
   "version": "1.0.0",
-  "description": "SC Social TwentyTwenty Child with Gulp + Webpack",
+  "description": "TwentyTwenty Child with Gulp + Webpack",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "start": "gulp",
-    "build": "gulp build --prod",
-    "bundle": "gulp bundle --prod"
+    "build": "gulp build --prod"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/register": "^7.11.5",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.26.13",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0-beta.2",
@@ -32,7 +31,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-wp-pot": "^2.3.6",
+    "gulp-wp-pot": "^2.5.0",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^5.2.1",
     "yargs": "^15.4.1"

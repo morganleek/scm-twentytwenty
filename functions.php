@@ -1,6 +1,7 @@
 <?php
-  require_once('lib/helpers.php');
-  require_once('lib/dequeue-twentytwenty.php');
-  require_once('lib/enqueue-assets.php');
-  require_once('lib/menus.php');
-  require_once('lib/theme.php');
+  // Theme Files
+  require get_theme_file_path( '/inc/helpers.php' );
+  require get_theme_file_path( '/inc/dequeue.php' );
+  require get_theme_file_path( '/inc/enqueue.php' );
+  require get_theme_file_path( '/inc/menus.php' );
+  require get_theme_file_path( '/inc/theme.php' );

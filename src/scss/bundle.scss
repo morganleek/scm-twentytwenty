@@ -8,6 +8,10 @@
 @import './components/article';
 @import './components/footer';
 
+// Plugins
+@import './plugins/wp-everything-image';
+@import './plugins/wpcf7';
+
 // external example
 // @import '../../node_modules/...';
 
@@ -17,5 +21,9 @@
 
 body {
   @extend %type;
-  @extend %type-front;
+  @extend %form;
+
+  // Plugins
+  @extend %wpcf7;
+  @extend %wp-everything-image;
 }

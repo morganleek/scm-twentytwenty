@@ -1,0 +1,12 @@
+%wp-everything-image {
+	.wei-picture-wrapper {
+		picture {
+			display: block;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+		}
+	}
+}

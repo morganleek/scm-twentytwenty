@@ -1,0 +1,18 @@
+footer {
+	padding: 20px 0 10px;
+	& > .container {
+		border-top: 1px solid;
+	}
+	nav {
+		ul {
+			list-style: none;
+			padding-left: 0;
+		}
+		& > ul {
+			display: flex;
+			li {
+				padding-right: 10px;
+			}
+		}
+	}
+}
