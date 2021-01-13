@@ -1,1 +1,23 @@
-$background: #fff;
+// Core Colours
+$white: #fff;
+$grey: #282828;
+
+// Variable Colours
+$background: $white;
+$link: $grey;
+
+// Gutenberg Colours
+// Text
+.has-inline-color,
+.has-text-color {
+	&.has-white-color {
+		color: $white;
+	}
+}
+
+// Backgrounds
+.has-background {
+	&.has-white-background-color {
+		background-color: $white;
+	}
+}

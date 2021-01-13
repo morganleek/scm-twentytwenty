@@ -2,6 +2,7 @@
 @import './components/colors';
 @import './components/type';
 @import './components/accessibility';
+@import './components/alignment';
 @import './components/gutenberg';
 @import './components/body';
 @import './components/header';
@@ -12,8 +13,14 @@
 @import './plugins/wp-everything-image';
 @import './plugins/wpcf7';
 
-// external example
-// @import '../../node_modules/...';
+// NPM
+// $hamburger-padding-x: 0;
+// $hamburger-padding-y: 0;
+// $hamburger-layer-height: 2px;
+// $hamburger-layer-width: 30px;
+// $hamburger-layer-spacing: 8px;
+// $hamburger-layer-border-radius: 0;
+// @import '../../node_modules/hamburgers/_sass/hamburgers/hamburgers';
 
 * {
   box-sizing: border-box;
@@ -22,6 +29,7 @@
 body {
   @extend %type;
   @extend %form;
+  @extend %wp-blocks;
 
   // Plugins
   @extend %wpcf7;

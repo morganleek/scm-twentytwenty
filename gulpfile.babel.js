@@ -17,7 +17,7 @@ const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
 export const serve = done => {
   server.init({
-    proxy: "wordpress.local",
+    proxy: "wor.beaker",
     open: false
   });
   done();

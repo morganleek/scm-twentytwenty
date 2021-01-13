@@ -1,5 +1,31 @@
 // for everywhere
 %wp-blocks {
+  .wp-block-image {
+    img {
+      max-width: 100%;
+    }
+    &.full-size {
+      display: block;
+    }
+    figcaption {
+      font-size: 1.5rem;
+    }
+  }
+  // .wp-block-columns {
+  //   // Breaks at 600 & 782
+  //   &:not(.is-style-gapless) {
+  //     .wp-block-column {
+  //       &:not(:first-child) {
+  //       }
+  //     }
+  //   }
+  // }
+  .wp-block-media-text {
+    .wp-block-media-text__content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
   .wp-block-quote {
     p {
       font-size: 20rem;
@@ -11,7 +37,7 @@
 %wp-blocks-admin {
   .wp-block-quote {
     p {
-      font-size: 22rem;
+      font-size: 2rem;
     }
   }
 }

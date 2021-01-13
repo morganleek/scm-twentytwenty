@@ -1,4 +1,11 @@
 header {
+	padding: 10px var(--content-mobile-margin) 20px;
+	@media (min-width: 768px) { 
+		padding: 30px var(--content-tablet-margin) 40px;
+	}
+	@media (min-width: 992px) { 
+		padding: 40px var(--content-desktop-margin) 50px;
+	}
 	nav {
 		ul {
 			list-style: none;

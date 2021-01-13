@@ -7,10 +7,16 @@
   font-size: 10px;
   --var-main-margin-top: 202px;
   --var-main-margin-bottom: 205px;
+
+  --content-width-max: 150rem;
+  --content-wide-width-max: 170rem;
+
+  --content-desktop-margin: 5rem;
+  --content-tablet-margin: 3rem;
+  --content-mobile-margin: 2rem;
 }
 
-// Font Families
-
+// Font Face - Font Families
 // @font-face {
 //   font-family: "Apercu Mono Medium Trial";
 //   src: url("../fonts/apercu-mono-medium-trial.otf") format("opentype");
@@ -20,14 +26,25 @@
 //   font-weight: normal;
 // }
 
+// Variable Font Sizes - https://codesandbox.io/s/clamp-linear-intepolation-based-on-viewport-width-builder-xgkft?from-embed
+// %font-size-paragraph {
+//   font-size: unquote("clamp(1.4rem, 1.2000rem + 0.5556vw, 2rem)");
+// }
+// %font-size-h1 {
+//   font-size: unquote("clamp(2.2rem, 1.2667rem + 2.5926vw, 5rem)");
+// }
+
 // Paragraph
 %paragraph {
   // @extend %apercu-reg;
+  // @extend %font-size-paragraph;
   font-size: 1.3rem;
   line-height: 1.2em;
   font-weight: normal;
   margin: 1.3em 0;
   // letter-spacing: 0.1em;
+
+  // Gutenberg Inline Sizes
   // .has-small-font-size,
   // &.has-small-font-size {
   //   font-size: 0.9em;
@@ -79,6 +96,9 @@
   h5 {
     font-size: 1.3rem;
   }
+  h6 {
+    font-size: 1.2rem;
+  }
   p, ol, ul, dl, dt, summary {
     @extend %paragraph;
     // & + h1,
@@ -108,7 +128,7 @@
     @extend %blockquote;
   }
   a {
-    color: blue;
+    color: $link;
     // text-decoration: none;
     // transition: all 0.3s;
     // &:hover {}
