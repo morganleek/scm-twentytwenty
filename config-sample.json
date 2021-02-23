@@ -1,8 +1,8 @@
 {
 	"browserSync": {
 		"proxy": "https://local.host",
-    "port": 3000,
-    "https": true,
+		"port": 3000,
+		"https": true,
 		"open": true
 	},
 	"theme": {
