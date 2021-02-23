@@ -7,17 +7,14 @@ npm install
 ```
 
 ## Start Checklist
-1. Update `gulpfile.babel.js` to your development domain.
-2. Update `package.json` name and description to match project.
-3. Create `screenshot.png` based on site design.
+1. Copy `config-sample.json` to `config.json` and update with your local development environment details and custom theme details.
+2. Create `screenshot.png` based on site design.
 
 ```bash
 # Dev
 gulp 
 # Build
 gulp build --prod
-# Bundle
-gulp bundle --prod // Bundle
 ```
 
 ## Deploy Checklist

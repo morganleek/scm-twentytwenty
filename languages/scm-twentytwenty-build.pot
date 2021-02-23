@@ -1,4 +1,4 @@
-# Copyright (C) 2020 scm_twentytwenty
+# Copyright (C) 2021 scm_twentytwenty
 # This file is distributed under the same license as the scm_twentytwenty package.
 msgid ""
 msgstr ""
@@ -13,26 +13,26 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: index.php:20
+#: index.php:25
 msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
-#: index.php:27
-msgid "Your city is"
-msgstr ""
-
-#: index.php:31
-msgid "Your city is %s"
-msgstr ""
-
-#: lib/helpers.php:6
+#: inc/helpers.php:15
 msgid "Posted on %s"
 msgstr ""
 
-#: lib/helpers.php:13
+#: inc/helpers.php:21
 msgid " By %s "
 msgstr ""
 
-#: lib/helpers.php:26
+#: inc/helpers.php:32
 msgid " Read More <span class=\"u-screen-reader-text\">About %s</span> "
+msgstr ""
+
+#: inc/menus.php:5
+msgid "Header Menu"
+msgstr ""
+
+#: inc/menus.php:6
+msgid "Footer Menu"
 msgstr ""

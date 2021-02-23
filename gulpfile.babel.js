@@ -1,7 +1,6 @@
 import { src, dest, watch, series, parallel } from 'gulp';
 import yargs from 'yargs';
 import sass from 'gulp-sass';
-// import cleanCss from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
@@ -10,15 +9,17 @@ import del from 'del';
 import webpack from 'webpack-stream';
 import named from 'vinyl-named';
 import browserSync from "browser-sync";
-import info from "./package.json";
 import replace from "gulp-replace";
 import wpPot from "gulp-wp-pot";
+import config from "./config.json";
 const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
 export const serve = done => {
   server.init({
-    proxy: "wor.beaker",
-    open: false
+    proxy: config.browserSync.proxy,
+    port: config.browserSync.port,
+    https: config.browserSync.https,
+    open: config.browserSync.open
   });
   done();
 };
@@ -83,28 +84,30 @@ export const themeify = () => {
     "!.babelrc",
     "!.gitignore",
     "!gulpfile.babel.js",
+    "!config.json",
+    "!config-sample.json",
     "!package.json",
     "!package-lock.json",
     "!stats.json",
     "!README.md",
     "!.DS_Store"
   ])
-  .pipe(replace("_themetitle", info.themetitle))
-  .pipe(replace("_themename", info.themename))
-  .pipe(replace("_themedescription", info.description))
+  .pipe(replace("_themetitle", config.theme.title))
+  .pipe(replace("_themename", config.theme.script))
+  .pipe(replace("_themedescription", config.theme.description))
   .pipe(replace("Version: 1.0.0", "Version: 1.0." + Date.now()))
   .pipe(replace("1.0.0", "1.0." + Date.now()))
-  .pipe(dest(`../${info.themefolder}/`));
+  .pipe(dest(`../${config.theme.folder}/`));
 };
 export const pot = () => {
   return src("**/*.php")
     .pipe(
       wpPot({
         domain: "_themename",
-        package: info.name
+        package: config.theme.script
       })
     )
-  .pipe(dest(`languages/${info.themefolder}.pot`));
+  .pipe(dest(`languages/${config.theme.folder}.pot`));
 };
 export const watchForChanges = () => {
   watch('src/scss/**/*.scss', styles);

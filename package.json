@@ -1,8 +1,5 @@
 {
   "name": "scm_twentytwenty",
-  "themename": "scm_twentytwenty",
-  "themetitle": "SCM TwentyTwenty",
-  "themefolder": "scm-twentytwenty",
   "version": "1.0.0",
   "description": "TwentyTwenty Child with Gulp + Webpack",
   "main": "index.js",

@@ -22,7 +22,7 @@
     <?php the_posts_pagination( ); ?>
 
   <?php } else { ?>
-    <p><?php esc_html_e('Sorry, no posts matched your criteria.', 'scm_twentytwenty'); ?></p>
+    <p><?php esc_html_e('Sorry, no posts matched your criteria.', '_themename'); ?></p>
   <?php } ?>
 
 <?php get_footer(); ?>

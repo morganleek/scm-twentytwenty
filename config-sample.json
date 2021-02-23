@@ -1,0 +1,14 @@
+{
+	"browserSync": {
+		"proxy": "https://local.host",
+    "port": 3000,
+    "https": true,
+		"open": true
+	},
+	"theme": {
+		"title": "SCM TwentyTwenty",
+		"description": "TwentyTwenty Child with Gulp + Webpack",
+		"folder": "scm-twentytwenty-build",
+		"script": "scm_twentytwenty"
+	}
+}
